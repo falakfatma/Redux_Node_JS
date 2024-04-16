@@ -20,48 +20,48 @@ function count_Decrease() {
 const initialState = { count: 0 };
 // const initialIncreaseState = { countIn: 0 };
 // const initialDecreaseState = { countDe: 20 };
-// const increaseReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case "INCREASE":
-//       return {
-//         ...state,
-//         count: state.count + 1,
-//       };
-//     default:
-//       return state;
-//   }
-// };
-// const decreaseReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case "DECREASE":
-//       return {
-//         ...state,
-//         count: state.count - 1,
-//       };
-//     default:
-//       return state;
-//   }
-// };
-const reducers = (state = initialState, action) => {
+const increaseReducer = (state = initialState, action) => {
   switch (action.type) {
     case "INCREASE":
       return {
         ...state,
         count: state.count + 1,
       };
+    default:
+      return state;
+  }
+};
+const decreaseReducer = (state = initialState, action) => {
+  switch (action.type) {
     case "DECREASE":
       return {
         ...state,
         count: state.count - 1,
       };
+    default:
+      return state;
   }
 };
-// const rootReducers = combineReducers({
-//   increase: increaseReducer,
-//   decrease: decreaseReducer,
-// });
-// const store = createStore(rootReducers);
-const store = createStore(reducers);
+// const reducers = (state = initialState, action) => {
+//   switch (action.type) {
+//     case "INCREASE":
+//       return {
+//         ...state,
+//         count: state.count + 1,
+//       };
+//     case "DECREASE":
+//       return {
+//         ...state,
+//         count: state.count - 1,
+//       };
+//   }
+// };
+const rootReducers = combineReducers({
+  increase: increaseReducer,
+  decrease: decreaseReducer,
+});
+const store = createStore(rootReducers);
+// const store = createStore(reducers);
 // console.log("Initial State", store.getState());
 
 const unsubscribe = store.subscribe(() => {
